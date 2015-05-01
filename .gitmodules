@@ -1,3 +1,6 @@
+[submodule "moonshine"]
+	path = moonshine
+	url = ../moonshine
 [submodule "button-stuff"]
 	path = button-stuff
-	url = https://github.com/den-chan/button-stuff
+	url = ../button-stuff
