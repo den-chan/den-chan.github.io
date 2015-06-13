@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <title>den-chan.github.io | One</title>
+  <meta charset="UTF-8" />
+  <link rel="icon" href="data:;base64,=">
+  <link href="fonts.css" rel="stylesheet">
+  <link href="blog.css" rel="stylesheet">
+  <style type="text/css">
+body {
+  font-family: 'proxima-nova', 'Helvetica', 'Avenir', 'Arial';
+  background: linear-gradient(45deg, #fffdfb 25%, transparent 25%, transparent 50%, #fffdfb 50%, #fffdfb 75%, transparent 75%);
+  background-size: 30px 30px
+}   
+svg {
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: auto;
+  z-index: -1;
+  top: 37pt
+}
+  </style>
+</head>
+<body>
+  <main id="render">
+    <svg width="305" height="305">
+      <circle fill="#ffffff" stroke="#ec8b18" stroke-width="5" cx="152.5" cy="152.5" r="150"/>
+      <circle fill="#ec8b18" cx="152.5" cy="152.5" r="141"/>
+    </svg>
+    <h1>One</h1>
+    <article id="blog"></article>
+  </main>
+  <script>
+function init () {
+  (function () {
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET", "posts.txt", true);
+    xhr.setRequestHeader("Content-type", "application/json");
+    xhr.onreadystatechange = function() { if (xhr.readyState === 4 && xhr.status === 200) return write( xhr.responseText ) };
+    xhr.send();
+  })()
+}
+  </script>
+  <script src="blog.js"></script>
+</body>
+</html>

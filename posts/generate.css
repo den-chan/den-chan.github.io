@@ -1,0 +1,51 @@
+body {
+  margin: 0;
+  overflow: hidden
+}
+
+#form {
+  overflow: auto;
+  width: calc(50% - 2px);
+  display: inline-block
+}
+
+#render {
+  width: calc(50% - 2px);
+  display: inline-block;
+  font-family: 'proxima-nova', 'Helvetica', 'Avenir', 'Arial';
+  background: linear-gradient(45deg, #fffdfb 25%, transparent 25%, transparent 50%, #fffdfb 50%, #fffdfb 75%, transparent 75%);
+  background-size: 30px 30px;
+  overflow: auto
+}
+
+#render > article {
+  margin: 0 1em
+}
+
+header > a {
+  width: calc(31% - 6.34em);
+}
+
+label {
+  display: block
+}
+
+#title {
+  padding: .3em .5em;
+  font-size: 14pt;
+  font-family: serif;
+  border: 1px solid #ccc;
+  color: #333;
+  width: calc(100% - 1em - 2px);
+}
+
+#body {
+  font-size: 14pt;
+  font-family: serif;
+  padding: .3em .5em;
+  border: 0;
+  outline: 0;
+  width: calc(100% - 1em);
+  color: #333;
+  resize: none
+}
