@@ -4,3 +4,6 @@
 [submodule "button-stuff"]
 	path = button-stuff
 	url = ../button-stuff
+[submodule "webcam-test"]
+	path = webcam-test
+	url = ../webcam-test
