@@ -1,21 +1,19 @@
 body {
   margin: 0;
-  overflow: hidden
+  position: relative
 }
 
-#form {
+body > div {
   overflow: auto;
-  width: calc(50% - 2px);
-  display: inline-block
+  width: 50%;
+  position: absolute
 }
 
 #render {
-  width: calc(50% - 2px);
-  display: inline-block;
+  right: 0;
   font-family: 'proxima-nova', 'Helvetica', 'Avenir', 'Arial';
   background: linear-gradient(45deg, #fffdfb 25%, transparent 25%, transparent 50%, #fffdfb 50%, #fffdfb 75%, transparent 75%);
   background-size: 30px 30px;
-  overflow: auto
 }
 
 #render > article {

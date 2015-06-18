@@ -13,7 +13,7 @@ function init () {
   function generate () {
     var offset = $("render").scrollTop ? $("render").scrollHeight - $("render").scrollTop : Infinity;
     $("blog").innerHTML = "";
-    write($("body").value);
+    write(localStorage.body = $("body").value);
     $("render").scrollTop = $("render").scrollHeight - offset;
     var offset = $("form").scrollTop ? $("form").scrollHeight - $("form").scrollTop : Infinity;
     $("body").style.height = "auto";
@@ -23,5 +23,7 @@ function init () {
     resize()
   }
   addEvents({ body: { change: generate, "cut paste drop keydown": function () { window.setTimeout(generate, 0) } }, "": { resize: resize } });
-  generate()
+  $("body").value = localStorage.body;
+  generate();
+  ajax('GET', "https://den-chan.herokuapp.com/one.txt", true)
 }

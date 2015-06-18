@@ -1,9 +1,24 @@
 init()
 
 function $ (a) { return document.getElementById(a) }
+function ajax (method, url, ta) {
+  var xhr = new XMLHttpRequest();
+  if ("withCredentials" in xhr) xhr.open(method, url, true);
+  else if (typeof XDomainRequest != "undefined") {
+    xhr = new XDomainRequest();
+    xhr.open(method, url)
+  } else throw new Error('CORS not supported');
+  xhr.onload = function() {
+    if (ta) write( $("body").value = localStorage.body === "" ? xhr.responseText : localStorage.body );
+    else write( xhr.responseText )
+  };
+  xhr.setRequestHeader("Content-type", "application/json");
+  xhr.send();
+  return xhr
+}
 function write (raw) {
   //  **bold**  //italic//  ``monospaced``  [[link url]]  [[link url|link text]]
-  //  >quote (\>no quote)  ␣␣↵line break  ↵↵paragraph  #(#..)header# #timestamp header||#
+  //  >quote (\>no quote)  ␣␣↵line break  ↵↵paragraph  #(#..)header#  #timestamp header||#
   function escape (text) {
     var div = document.createElement("div");
     div.appendChild(document.createTextNode(text));
@@ -28,8 +43,8 @@ function write (raw) {
           "</h2><time class='timestamp'>" + (($3 && $3.slice(2, Infinity)) || new Date(Date.now()).toISOString()) + "</time></header>"
       } else return "<h" + l + ">" + $2 + "</h" + l + ">"
     })
-    .replace(/``([\s\S]*)``/g, "<code>$1</code>") //incorrect. redo as textNode
-    .replace(/\*\*([\s\S]*)\*\*/g, "<strong>$1</strong>")
+    .replace(/``([^`]*)``/g, "<code>$1</code>") //incorrect. redo as textNode
+    .replace(/\*\*([^*]*)\*\*/g, "<strong>$1</strong>")
     .replace(/^/," ").replace(/([^:])\/\/(((?!\/\/)[\s\S])*)\/\//gm, "$1<em>$2</em>").replace(/^ /,"")
     .replace(/\[\[([^\]|]*)\]\]/g, function ($0, $1) { return "<a href='" + $1.replace(/'/g, "&apos;") + "'>" + $1 + "</a>" })
     .replace(/\[\[([^|]*)\|([^\]]*)\]\]/g, function ($0, $1, $2) { return "<a href='" + $1.replace(/'/g, "&apos;") + "'>" + $2 + "</a>" });

@@ -1,6 +1,0 @@
-[submodule "moonshine"]
-	path = moonshine
-	url = ../moonshine
-[submodule "button-stuff"]
-	path = button-stuff
-	url = ../button-stuff

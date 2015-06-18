@@ -33,13 +33,7 @@ svg {
   </main>
   <script>
 function init () {
-  (function () {
-    var xhr = new XMLHttpRequest();
-    xhr.open("GET", "posts.txt", true);
-    xhr.setRequestHeader("Content-type", "application/json");
-    xhr.onreadystatechange = function() { if (xhr.readyState === 4 && xhr.status === 200) return write( xhr.responseText ) };
-    xhr.send();
-  })()
+  ajax('GET', "https://den-chan.herokuapp.com/one.txt")
 }
   </script>
   <script src="blog.js"></script>
